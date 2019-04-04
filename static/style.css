@@ -1,0 +1,17 @@
+﻿body {
+    background: gray;
+    background-image:url("city.png");
+    color: white;
+}
+h1{
+    text-align: center;
+    text-decoration: underline;
+    text-transform: uppercase;
+    text-shadow: 3px 2px black;
+}
+.container {
+    text-align: right;
+    text-decoration: underline;
+    text-transform: uppercase;
+    text-shadow: 3px 2px black;
+}
