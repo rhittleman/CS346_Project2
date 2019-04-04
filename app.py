@@ -120,7 +120,7 @@ def game():
                insert = """ INSERT INTO games (
                game_id, current_round, p1_score, p1_done, p2_score, p2_done) VALUES
                (%S, %s, %s, %s, %s) """
-                gtuple = (NULL, data2[2], FALSE, data2[4]+1, FALSE)
+               gtuple = (NULL, data2[2], FALSE, data2[4]+1, FALSE)
                cursor = conn.cursor()
                result  = cursor.execute(insert, gtuple)
                conn.commit()
