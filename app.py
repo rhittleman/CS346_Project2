@@ -10,7 +10,6 @@ def game():
 @app.route("/", methods=['GET', 'POST'])
 def main():
     error = None
-    # userName_pass = {'Ben':'Ben123','Ryan':'Ryan123','Russ':'Russ123','Ann':'ann123','Tony':'Tony123'}
     if request.method == 'POST':
         curr = db_current_for_user.find_user(request.form['username'], request.form['password'])
         if None != curr
