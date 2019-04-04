@@ -6,7 +6,8 @@ conn = psycopg2.connect(host="cs346proj2db.ctkh18zy1p4k.us-east-1.rds.amazonaws.
 # Open a cursor to perform database operations
 cur = conn.cursor()
 
-# Query the database and obtain data as Python objects (tuple)
+# Query the database and obtain data as Python objects 
+# (tuple of one entry if found, None if not)
 cur.execute("SELECT * FROM table;")
 cur.fetchone()
 
