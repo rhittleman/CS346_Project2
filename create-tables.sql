@@ -1,5 +1,5 @@
 -- Remove old tables
-DROP TABLE IF EXISTS games, users, logins;
+DROP TABLE IF EXISTS logins, users, games;
 
 -- Game Data
 CREATE TABLE rounds (
