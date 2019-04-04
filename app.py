@@ -9,7 +9,7 @@ def game():
     x = 0
     y = 0
     if request.method == 'POST':
-        value = request.form['name']
+        option = request.form['options']
         conn = psycopg2.connect(host="cs346proj2db.ctkh18zy1p4k.us-east-1.rds.amazonaws.com", dbname="cs346proj2db", user="cs346proj2admin", password="proj2pass")
         get = "SELECT * FROM rounds"
         get2 = "SELECT * FROM games"
@@ -21,7 +21,17 @@ def game():
         cursor = conn.cursor()
         cursor.execute(get2)
         data2 =cursor.fetchall()
-
+        value = 0
+        if option == "r":
+            value = 1
+        elif option == "p":
+            value = 2
+        elif option == "s":
+            value = 3
+        elif option == "sp":
+            value = 4
+        elif option == "l":
+            value = 5
         insert = """ INSERT INTO 'rounds'
         ('round_id', 'prev_round', 'p1_choice', 'p2_choice') VALUES
         (None, None, value, data[3]) """
@@ -46,14 +56,14 @@ def game():
                 cursor.close()
                 conn.close()
                 return render_template('game.html', x=data2[2], y=data2[4])
-            elif data[3] == 5 and value == 5:
+            elif data[3] == 5 and rvalue == 5:
                 cursor.close()
                 conn.close()
                 return render_template('game.html', x=data2[2], y=data2[4])
             elif data[3] == 1 and (value == 2 or value == 4):
                 insert = """ INSERT INTO 'games'
                 ('game_id', 'current_round', 'p1_score', 'p1_done', 'p2_score', 'p2_done') VALUES
-                (None, None, data2[2]+1, None, data2[4], None) """
+                (None, None, data2[2]+1, FALSE, data2[4], FALSE) """
                 cursor = conn.cursor()
                 result  = cursor.execute(insert)
                 conn.commit()
@@ -63,7 +73,7 @@ def game():
             elif data[3] == 2 and (value == 3 or value == 5):
                 insert = """ INSERT INTO 'games'
                 ('game_id', 'current_round', 'p1_score', 'p1_done', 'p2_score', 'p2_done') VALUES
-                (None, None, data2[2]+1, None, data2[4], None) """
+                (None, None, data2[2]+1, FALSE, data2[4], FALSE) """
                 cursor = conn.cursor()
                 result  = cursor.execute(insert)
                 conn.commit()
@@ -73,7 +83,7 @@ def game():
             elif data[3] == 3 and (value == 1 or value == 4):
                 insert = """ INSERT INTO 'games'
                 ('game_id', 'current_round', 'p1_score', 'p1_done', 'p2_score', 'p2_done') VALUES
-                (None, None, data2[2]+1, None, data2[4], None) """
+                (None, None, data2[2]+1, FALSE, data2[4], FALSE) """
                 cursor = conn.cursor()
                 result  = cursor.execute(insert)
                 conn.commit()
@@ -83,7 +93,7 @@ def game():
             elif data[3] == 4 and (value == 2 or value == 5):
                 insert = """ INSERT INTO 'games'
                 ('game_id', 'current_round', 'p1_score', 'p1_done', 'p2_score', 'p2_done') VALUES
-                (None, None, data2[2]+1, None, data2[4], None) """
+                (None, None, data2[2]+1, FALSE, data2[4], FALSE) """
                 cursor = conn.cursor()
                 result  = cursor.execute(insert)
                 conn.commit()
@@ -93,7 +103,7 @@ def game():
             elif data[3] == 5 and (value == 1 or value == 3):
                 insert = """ INSERT INTO 'games'
                 ('game_id', 'current_round', 'p1_score', 'p1_done', 'p2_score', 'p2_done') VALUES
-                (None, None, data2[2]+1, None, data2[4], None) """
+                (None, None, data2[2]+1, FALSE, data2[4], FALSE) """
                 cursor = conn.cursor()
                 result  = cursor.execute(insert)
                 conn.commit()
@@ -103,14 +113,15 @@ def game():
             else:
                 insert = """ INSERT INTO 'games'
                 ('game_id', 'current_round', 'p1_score', 'p1_done', 'p2_score', 'p2_done') VALUES
-                (None, None, data2[2], None, data2[4]+1, None) """
+                (None, None, data2[2], FALSE, data2[4]+1, FALSE) """
                 cursor = conn.cursor()
                 result  = cursor.execute(insert)
                 conn.commit()
                 cursor.close()
                 conn.close()
                 return render_template('game.html', x=data2[2], y=data2[4]+1)
-
+        else:
+            return render_template('game.html', x=data2[2], y=data2[4])
     return render_template('game.html', x=x, y=y)
 
 @app.route("/", methods=['GET', 'POST'])
