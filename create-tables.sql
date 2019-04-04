@@ -1,12 +1,12 @@
 -- Remove old tables
-DROP TABLE IF EXISTS games, users;
+DROP TABLE IF EXISTS games, users, logins;
 
 -- Game Data
 CREATE TABLE rounds (
 	round_id	serial PRIMARY KEY,
 	prev_round	int REFERENCES rounds ON DELETE CASCADE,
 	p1-choice	int,
-	p2-choice	int,
+	p2-choice	int
 );
 CREATE TABLE games (
 	game_id			serial PRIMARY KEY,
@@ -16,7 +16,7 @@ CREATE TABLE games (
 	p1-done			boolean DEFAULT FALSE,
 	-- player 2 stats
 	p2-score		int DEFAULT 0,
-	p2-done			boolean DEFAULT FALSE,
+	p2-done			boolean DEFAULT FALSE
 );
 -- User Tables
 CREATE TABLE users (
@@ -25,6 +25,12 @@ CREATE TABLE users (
 	losses			int,
 	current_game	int REFERENCES games,
 	current_p1		boolean,
-	longest_game	int REFERENCES games,
+	longest_game	int REFERENCES games
 );
 -- Login Tables?
+CREATE TABLE logins (
+	user		varchar,
+	pass		varchar,
+	user_id		int REFERENCES users ON DELETE CASCADE,
+	PRIMARY KEY (user, pass)
+);
