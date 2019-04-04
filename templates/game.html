@@ -13,7 +13,7 @@
     <div class="score">
         <div id="user" class="sign">USER</div>
         <div id="player" class="sign">PLAYER</div>
-        <span id="uscore">{{ x }}</span>:<span id="pscore">{{ y }}</span>
+        {% if x > -1 %}<span id="uscore">{{ x }}</span>{% endif %}:{% if y > -1 %}<span id="pscore">{{ y }}</span>{% endif %}
     </div>
 
     <div classes="choices">
