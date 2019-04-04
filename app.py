@@ -33,9 +33,9 @@ def game():
         elif option == "l":
             value = 5
         insert = """ INSERT INTO rounds
-        (round_id, prev_round, p1_choice, p2_choice) VALUES
-        (%S, %s, %s) """
-        rtuple = (NULL, value, data[3])
+        (prev_round, p1_choice, p2_choice) VALUES
+        (%s, %s, %s) """
+        rtuple = (None, value, data[3])
         cursor = conn.cursor()
         result  = cursor.execute(insert, rtuple)
         conn.commit()
@@ -63,9 +63,9 @@ def game():
                 return render_template('game.html', x=data2[2], y=data2[4])
             elif data[3] == 1 and (value == 2 or value == 4):
                 insert = """ INSERT INTO games
-                (game_id, current_round, p1_score, p1_done, p2_score, p2_done) VALUES
-                (%S, %s, %s, %s, %s) """
-                gtuple = (NULL, data2[2]+1, FALSE, data2[4], FALSE)
+                (current_round, p1_score, p1_done, p2_score, p2_done) VALUES
+                (%s, %s, %s, %s, %s) """
+                gtuple = (None, data2[2]+1, False, data2[4], False)
                 cursor = conn.cursor()
                 result  = cursor.execute(insert, gtuple)
                 conn.commit()
@@ -74,9 +74,9 @@ def game():
                 return render_template('game.html', x=data2[2]+1, y=data2[4])
             elif data[3] == 2 and (value == 3 or value == 5):
                 insert = """ INSERT INTO games
-                (game_id, current_round, p1_score, p1_done, p2_score, p2_done) VALUES
-                (%S, %s, %s, %s, %s) """
-                gtuple = (NULL, data2[2]+1, FALSE, data2[4], FALSE)
+                (current_round, p1_score, p1_done, p2_score, p2_done) VALUES
+                (%s, %s, %s, %s, %s) """
+                gtuple = (None, data2[2]+1, False, data2[4], False)
                 cursor = conn.cursor()
                 result  = cursor.execute(insert, gtuple)
                 conn.commit()
@@ -85,9 +85,9 @@ def game():
                 return render_template('game.html', x=data2[2]+1, y=data2[4])
             elif data[3] == 3 and (value == 1 or value == 4):
                 insert = """ INSERT INTO games
-                (game_id, current_round, p1_score, p1_done, p2_score, p2_done) VALUES
-                (%S, %s, %s, %s, %s) """
-                gtuple = (NULL, data2[2]+1, FALSE, data2[4], FALSE)
+                (current_round, p1_score, p1_done, p2_score, p2_done) VALUES
+                (%s, %s, %s, %s, %s) """
+                gtuple = (None, data2[2]+1, False, data2[4], False)
                 cursor = conn.cursor()
                 result  = cursor.execute(insert, gtuple)
                 conn.commit()
@@ -96,9 +96,9 @@ def game():
                 return render_template('game.html', x=data2[2]+1, y=data2[4])
             elif data[3] == 4 and (value == 2 or value == 5):
                 insert = """ INSERT INTO games
-                (game_id, current_round, p1_score, p1_done, p2_score, p2_done) VALUES
-                (%S, %s, %s, %s, %s) """
-                gtuple = (NULL, data2[2]+1, FALSE, data2[4], FALSE)
+                (current_round, p1_score, p1_done, p2_score, p2_done) VALUES
+                (%s, %s, %s, %s, %s) """
+                gtuple = (None, data2[2]+1, False, data2[4], False)
                 cursor = conn.cursor()
                 result  = cursor.execute(insert, gtuple)
                 conn.commit()
@@ -107,9 +107,9 @@ def game():
                 return render_template('game.html', x=data2[2]+1, y=data2[4])
             elif data[3] == 5 and (value == 1 or value == 3):
                 insert = """ INSERT INTO games
-                (game_id, current_round, p1_score, p1_done, p2_score, p2_done) VALUES
-                (%S, %s, %s, %s, %s) """
-                gtuple = (NULL, data2[2]+1, FALSE, data2[4], FALSE)
+                (current_round, p1_score, p1_done, p2_score, p2_done) VALUES
+                (%s, %s, %s, %s, %s) """
+                gtuple = (None, data2[2]+1, False, data2[4], False)
                 cursor = conn.cursor()
                 result  = cursor.execute(insert, gtuple)
                 conn.commit()
@@ -117,10 +117,10 @@ def game():
                 conn.close()
                 return render_template('game.html', x=data2[2]+1, y=data2[4])
             else:
-               insert = """ INSERT INTO games (
-               game_id, current_round, p1_score, p1_done, p2_score, p2_done) VALUES
-               (%S, %s, %s, %s, %s) """
-               gtuple = (NULL, data2[2], FALSE, data2[4]+1, FALSE)
+               insert = """ INSERT INTO games
+               (current_round, p1_score, p1_done, p2_score, p2_done) VALUES
+               (%s, %s, %s, %s, %s) """
+               gtuple = (None, data2[2], False, data2[4]+1, False)
                cursor = conn.cursor()
                result  = cursor.execute(insert, gtuple)
                conn.commit()
