@@ -5,8 +5,8 @@ DROP TABLE IF EXISTS logins, users, games;
 CREATE TABLE rounds (
 	round_id	serial PRIMARY KEY,
 	prev_round	int REFERENCES rounds ON DELETE CASCADE,
-	p1-choice	int,
-	p2-choice	int
+	p1_choice	int,
+	p2_choice	int
 );
 CREATE TABLE games (
 	game_id			serial PRIMARY KEY,
