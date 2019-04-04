@@ -117,16 +117,14 @@ def game():
                 conn.close()
                 return render_template('game.html', x=data2[2]+1, y=data2[4])
             else:
-               insert = """ INSERT INTO games
-                (game_id, current_round, p1_score, p1_done, p2_score, p2_done) VALUES
-                (%s, %S, %s, %s, %s, %s) """
-                gtuple = (DEFAULT, NULL, data2[2], FALSE, data2[4]+1, FALSE)
-                cursor = conn.cursor()
-                result  = cursor.execute(insert, gtuple)
-                conn.commit()
-                cursor.close()
-                conn.close()
-                return render_template('game.html', x=data2[2], y=data2[4]+1)
+               insert = """ INSERT INTO games (game_id, current_round, p1_score, p1_done, p2_score, p2_done) VALUES (%s, %S, %s, %s, %s, %s) """
+               gtuple = (DEFAULT, NULL, data2[2], FALSE, data2[4]+1, FALSE)
+               cursor = conn.cursor()
+               result  = cursor.execute(insert, gtuple)
+               conn.commit()
+               cursor.close()
+               conn.close()
+               return render_template('game.html', x=data2[2], y=data2[4]+1)
         else:
             return render_template('game.html', x=data2[2], y=data2[4])
     return render_template('game.html', x=x, y=y)
