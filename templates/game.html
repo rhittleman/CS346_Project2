@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
-
 <html>
 <head>
     <meta charset="utf-8" />
     <title>Rock Paper Scissors Lizard Spock</title>
+    <link rel="stylesheet" href="/static/game.css"/>
 </head>
 <body>
     <header>
@@ -11,8 +11,8 @@
     </header>
 
     <div class="score">
-        <div id="user" class="sign">user</div>
-        <div id="player" class="sign">player</div>
+        <div id="user" class="sign">USER</div>
+        <div id="player" class="sign">PLAYER</div>
         <span id="uscore">0</span>:<span id="pscore">0</span>
     </div>
 
@@ -21,21 +21,59 @@
     </div>
 
     <div classes="choices">
-        <div class="choice" id="r">
-            <img src="static/rock.jpg" />
-        </div>
-        <div class="choice" id="p">
-            <img src="static/paper.png" />
-        </div>
-        <div class="choice" id="s">
-            <img src="static/scissors.jpg" />
-        </div>
-        <div class="choice" id="sp">
-            <img src="static/spock.jpg" />
-        </div>
-        <div class="choice" id="l">
-            <img src="static/lizard.png" />
-        </div>
+        <form action="" method="post">
+            <input type="checkbox" name="rock" value="r"> 
+            <div class="choice" id="r"><img src="static/rocks.jpg" width="50" /></div><br>
+            <input type="checkbox" name="peper" value="p"> 
+            <div class="choice" id="p"><img src="static/papers.png" width="50" /></div><br>
+            <input type="checkbox" name="scissors" value="s"> 
+            <div class="choice" id="s"><img src="static/scissors.jpg" width="50" /></div><br>
+            <input type="checkbox" name="spock" value="sp"> 
+            <div class="choice" id="sp"><img src="static/spocks.jpg" width="50" /></div><br>
+            <input type="checkbox" name="lizard" value="l"> <div class="choice" id="l">
+            <img src="static/lizards.png" width="50" /></div><br><br>
+            <input type="submit" value="Submit">
+        </form>
     </div>
+
+    <p id="action">Make your move!</p>
+
+    <script>
+        const userScore = 0;
+        const playerScore = 0;
+        const userScore_span = document.getElementById("uscore");
+        const playerScore_span = document.getElementById("pscore");
+        const scoreBoard = document.querySelector(".score");
+        const result = document.querySelector(".result");
+        const rock = document.getElementById("r");
+        const paper = document.getElementById("p");
+        const scissors = document.getElementById("s");
+        const spock = document.getElementById("sp");
+        const lizard = document.getElementById("l");
+
+        function getPlayerChoice() {
+            const choices = ['r', 'p', 's', 'sp', 'l'];
+            console.log(Math.random() * 5);
+        }
+        function game(userChoice) {
+            console.log("Oops  " + userChoice)
+        }
+
+        function main() {
+            rock.addEventListener('click', function () {
+                game("r");
+            })
+            paper.addEventListener('click', function () {
+                game("p");            })
+            scissors.addEventListener('click', function () {
+                game("s");            })
+            spock.addEventListener('click', function () {
+                game("sp");            })
+            lizard.addEventListener('click', function () {
+                game("l");            })
+        }
+
+        main();
+    </script>
 </body>
 </html>

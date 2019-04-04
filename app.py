@@ -12,7 +12,7 @@ def main():
     error = None
     if request.method == 'POST':
         curr = db_current_for_user.find_user(request.form['username'], request.form['password'])
-        if None != curr
+        if None != curr:
             return redirect(url_for('game'))
         error = 'Invalid Credentials. Please try again.'
     return render_template('index.html', error=error)
