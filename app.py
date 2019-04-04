@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
+import db_current_for_user
 
 app = Flask(__name__)
 
@@ -9,11 +10,11 @@ def game():
 @app.route("/", methods=['GET', 'POST'])
 def main():
     error = None
-    userName_pass = {'Ben':'Ben123','Ryan':'Ryan123','Russ':'Russ123','Ann':'ann123','Tony':'Tony123'}
+    # userName_pass = {'Ben':'Ben123','Ryan':'Ryan123','Russ':'Russ123','Ann':'ann123','Tony':'Tony123'}
     if request.method == 'POST':
-        for key in userName_pass:
-            if request.form['username'] == key and request.form['password'] == userName_pass[key]:
-                return redirect(url_for('game'))
+        curr = db_current_for_user.find_user(request.form['username'], request.form['password'])
+        if None != curr
+            return redirect(url_for('game'))
         error = 'Invalid Credentials. Please try again.'
     return render_template('index.html', error=error)
 
