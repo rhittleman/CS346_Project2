@@ -24,7 +24,7 @@ CREATE TABLE users (
 	wins			int,
 	losses			int,
 	current_game	int REFERENCES games,
-	current_p1		boolean,
+	current_p1		boolean
 );
 -- Login Tables?
 CREATE TABLE logins (
