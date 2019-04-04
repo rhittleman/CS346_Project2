@@ -9,7 +9,7 @@ def find_user(username, password):
 	cur = conn.cursor()
 
 	# Query the database
-	cur.execute("SELECT * FROM logins NATURAL JOIN users NATURAL JOIN games NATURAL JOIN rounds WHERE user = %s AND pass = %s;" (username, password))
+	cur.execute("SELECT * FROM logins NATURAL JOIN users NATURAL JOIN games NATURAL JOIN rounds WHERE username = %s AND password = %s;", (username, password))
 	response = cur.fetchone()
 
 	# Close communication with the database
