@@ -1,7 +1,7 @@
 import psycopg2
 
 # Connect to the database
-conn = psycopg2.connect(host="cs346proj2db.ctkh18zy1p4k.us-east-1.rds.amazonaws.com" dbname="cs346proj2db" user="cs346proj2admin" password="proj2pass")
+conn = psycopg2.connect(host="cs346proj2db.ctkh18zy1p4k.us-east-1.rds.amazonaws.com", dbname="cs346proj2db", user="cs346proj2admin", password="proj2pass")
 
 # Open a cursor to perform database operations
 cur = conn.cursor()
