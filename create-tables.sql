@@ -28,8 +28,8 @@ CREATE TABLE users (
 );
 -- Login Tables?
 CREATE TABLE logins (
-	user		varchar,
-	pass		varchar,
-	user_id		int REFERENCES users ON DELETE CASCADE,
-	PRIMARY KEY (user, pass)
+	username		varchar,
+	password		varchar,
+	user_id			int REFERENCES users ON DELETE CASCADE,
+	PRIMARY KEY (username, password)
 );
