@@ -20,7 +20,7 @@ def game():
         
         cursor = conn.cursor()
         cursor.execute(get2)
-        data2 =cursor.fetchall()
+        data2 = cursor.fetchall()
         value = 0
         if option == "r":
             value = 1
