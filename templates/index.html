@@ -3,24 +3,36 @@
 <head>
     <meta charset="utf-8" />
     <title>Rock Paper Scissors Lizard Spock</title>
-    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/style.css"/>
+    <style>
+        .p1 {
+            margin: 0 auto;
+            width: 10%;
+        }
+        .p2 {
+            margin: 0 auto;
+            width: 3.5%;
+        }
+    </style>
 </head>
 <body>
     <div>
         <h1>Welcome to my Rock Paper Scissors Lizard Spock site!</h1>
-        <img src="static/RockPaperScissorSpockLizard.png" width="200" />
-    </div>
-    <div class="container">
         <h1>Please login</h1>
         <br>
         <form action="" method="post">
-            <input type="text" placeholder="Username" name="username" value="{{request.form.username }}">
-            <input type="password" placeholder="Password" name="password" value="{{request.form.password }}">
-            <input class="btn btn-default" type="submit" value="Login">
+            <div class="p1">
+                <input align="middle" type="text" placeholder="Username" name="username" value="{{request.form.username }}"><br>
+                <input align="middle" type="password" placeholder="Password" name="password" value="{{request.form.password }}"><br>
+            </div>
+            <div class="p2">
+                <input align="middle" class="btn btn-default" type="submit" value="Login">
+            </div>
         </form>
         {% if error %}
-        <p class="error"><strong>Error:</strong> {{ error }}></p>
+            <h1><strong>Error:</strong> {{ error }}</h1>
         {% endif %}
+        <img src="static/RockPaperScissorSpockLizard.png" width="250" style="display: block; margin-left: auto; margin-right: auto;"/>
     </div>
 </body>
 </html>
