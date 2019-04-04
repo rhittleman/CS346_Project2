@@ -25,7 +25,6 @@ CREATE TABLE users (
 	losses			int,
 	current_game	int REFERENCES games,
 	current_p1		boolean,
-	longest_game	int REFERENCES games
 );
 -- Login Tables?
 CREATE TABLE logins (
